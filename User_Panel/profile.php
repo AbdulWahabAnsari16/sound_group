@@ -1,6 +1,12 @@
 <?php 
 session_start();
 include 'conn.php';
+
+$u_email = $_SESSION['e'] ;
+$sqlSelect = "SELECT * FROM `user` WHERE `u_email` = '$u_email'";
+$res = mysqli_query($conn,$sqlSelect);
+$row = mysqli_fetch_array($res);
+
 if(!$_SESSION['e']){
 	echo "<script>
     window.location.href = 'signin.php';
@@ -190,8 +196,8 @@ if(!$_SESSION['e']){
 								<img src="img/avatar.svg" alt="">
 							</div>
 							<div class="profile__meta">
-								<h3>John Doe</h3>
-								<span>Sound_Group ID: 11104</span>
+								<h3><?php echo $row[1]; ?></h3>
+								<span>Sound_Group ID: <?php echo $row[0]; ?></span>
 							</div>
 						</div>
 
