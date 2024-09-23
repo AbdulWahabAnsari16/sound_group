@@ -597,17 +597,24 @@ if(!$_SESSION['e']){
 												<h4 class="sign__title">Profile details</h4>
 											</div>
 
-											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+											<!-- <div class="col-12 col-md-6 col-lg-12 col-xl-6">
 												<div class="sign__group">
 													<label class="sign__label" for="username">Login</label>
 													<input id="username" type="text" name="username" class="sign__input" placeholder="User123">
+												</div>
+											</div> -->
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="username">Name</label>
+													<input id="username" type="text" name="username" class="sign__input" value="<?php echo$row[1] ?>">
 												</div>
 											</div>
 
 											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 												<div class="sign__group">
 													<label class="sign__label" for="email">Email</label>
-													<input id="email" type="text" name="email" class="sign__input" placeholder="email@email.com">
+													<input id="email" type="text" name="email" class="sign__input" readonly  value="<?php echo$row[2] ?>">
 												</div>
 											</div>
 

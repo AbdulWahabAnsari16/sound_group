@@ -1,8 +1,11 @@
 <?php 
 include 'conn.php';
-$sqlSelect = "SELECT * FROM `artist`";
-$res = mysqli_query($conn,$sqlSelect);
-$row = mysqli_fetch_array($res);
+$sqlSelect1 = "SELECT * FROM `artist`";
+$res1 = mysqli_query($conn,$sqlSelect1);
+$row1 = mysqli_fetch_array($res1);
+
+$sqlSelect2 = "SELECT * FROM genre,artist WHERE  genre.art_id = artist.art_id ";
+$res2 = mysqli_query($conn,$sqlSelect2);
 ?>
 
 <!DOCTYPE html>
@@ -411,18 +414,18 @@ $row = mysqli_fetch_array($res);
 						<div class="col-6 col-sm-4 col-md-3 col-xl-2">
 							<a href="artist.php" class="artist">
 								<div class="artist__cover">
-									<img src="<?php echo "../ADMIN DASHBOARD/artistImg/".$row[2]; ?>" alt="">
+									<img src="<?php echo "../ADMIN DASHBOARD/artistImg/".$row1[2]; ?>" alt="">
 								</div>
-								<h3 class="artist__title"><?php echo $row[1]; ?></h3>
+								<h3 class="artist__title"><?php echo $row1[1]; ?></h3>
 							</a>
 						</div>
 
 						<div class="col-6 col-sm-4 col-md-3 col-xl-2">
 							<a href="artist.php" class="artist">
 								<div class="artist__cover">
-									<img src="<?php echo "../ADMIN DASHBOARD/artistImg/".$row[2]; ?>" alt="">
+									<img src="<?php echo "../ADMIN DASHBOARD/artistImg/".$row1[2]; ?>" alt="">
 								</div>
-								<h3 class="artist__title"><?php echo $row[1]; ?></h3>
+								<h3 class="artist__title"><?php echo $row1[1]; ?></h3>
 							</a>
 						</div>
 					<!-- <button class="main__load" type="button">Load more</button> -->
@@ -446,76 +449,20 @@ $row = mysqli_fetch_array($res);
 
 						<div class="col-12">
 							<ul class="main__list">
+								<?php while($row2 = mysqli_fetch_array($res2)){ ?>
 								<li class="single-item">
-									<span class="single-item__number">1</span>
-									<span class="single-item__rate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.71,12.54a1,1,0,0,0-1.42,0l-3,3A1,1,0,0,0,9.71,17L12,14.66,14.29,17a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Zm-3-1.08L12,9.16l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-3-3a1,1,0,0,0-1.42,0l-3,3a1,1,0,0,0,1.42,1.42Z"/></svg> 1</span>
-									<a data-link data-title="Cinematic" data-artist="AudioPizza" data-img="img/covers/cover1.jpg" href="http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3" class="single-item__cover">
+									<!-- <a data-link data-title="Cinematic" data-artist="AudioPizza" data-img="img/covers/cover1.jpg" href="http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3" class="single-item__cover">
 										<img src="img/covers/cover1.jpg" alt="">
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
+									</a> -->
 									<div class="single-item__title">
-										<h4><a href="#">Cinematic</a></h4>
-										<span><a href="artist.php">AudioPizza</a></span>
+										<h4><a href="#"><?php echo $row2[1] ?></a></h4>
+										<span><a href="artist.php"><?php echo $row2[4] ?></a></span>
 									</div>
 									<span class="single-item__time">2:35</span>
 								</li>
-								<li class="single-item">
-									<span class="single-item__number">2</span>
-									<span class="single-item__rate single-item__rate--red"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.29,11.46a1,1,0,0,0,1.42,0l3-3A1,1,0,1,0,14.29,7L12,9.34,9.71,7A1,1,0,1,0,8.29,8.46Zm3,1.08L12,14.84l-2.29-2.3A1,1,0,0,0,8.29,14l3,3a1,1,0,0,0,1.42,0l3-3a1,1,0,0,0-1.42-1.42Z"/></svg> 1</span>
-									<a data-link data-title="Adventure" data-artist="AudioPizza" data-img="img/covers/cover2.jpg" href="http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3" class="single-item__cover">
-										<img src="img/covers/cover2.jpg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">Adventure</a></h4>
-										<span><a href="artist.php">AudioPizza</a></span>
-									</div>
-									<span class="single-item__time">3:37</span>
-								</li>
-								<li class="single-item">
-									<span class="single-item__number">3</span>
-									<span class="single-item__rate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.71,12.54a1,1,0,0,0-1.42,0l-3,3A1,1,0,0,0,9.71,17L12,14.66,14.29,17a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Zm-3-1.08L12,9.16l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-3-3a1,1,0,0,0-1.42,0l-3,3a1,1,0,0,0,1.42,1.42Z"/></svg> 15</span>
-									<a data-link data-title="Epic Motivational" data-artist="AudioPizza" data-img="img/covers/cover3.jpg" href="http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3" class="single-item__cover">
-										<img src="img/covers/cover3.jpg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">Epic Motivational</a></h4>
-										<span><a href="artist.php">AudioPizza</a></span>
-									</div>
-									<span class="single-item__time">5:30</span>
-								</li>
-								<li class="single-item">
-									<span class="single-item__number">4</span>
-									<span class="single-item__rate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.71,12.54a1,1,0,0,0-1.42,0l-3,3A1,1,0,0,0,9.71,17L12,14.66,14.29,17a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Zm-3-1.08L12,9.16l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-3-3a1,1,0,0,0-1.42,0l-3,3a1,1,0,0,0,1.42,1.42Z"/></svg> 11</span>
-									<a data-link data-title="Upbeat Rock" data-artist="AudioPizza" data-img="img/covers/cover4.jpg" href="http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3" class="single-item__cover">
-										<img src="img/covers/cover4.jpg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">Upbeat Rock</a></h4>
-										<span><a href="artist.php">AudioPizza</a></span>
-									</div>
-									<span class="single-item__time">3:42</span>
-								</li>
-								<li class="single-item">
-									<span class="single-item__number">5</span>
-									<span class="single-item__rate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.71,12.54a1,1,0,0,0-1.42,0l-3,3A1,1,0,0,0,9.71,17L12,14.66,14.29,17a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Zm-3-1.08L12,9.16l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-3-3a1,1,0,0,0-1.42,0l-3,3a1,1,0,0,0,1.42,1.42Z"/></svg> 2</span>
-									<a data-link data-title="Ambient Pop" data-artist="AudioPizza" data-img="img/covers/cover5.jpg" href="http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3" class="single-item__cover">
-										<img src="img/covers/cover5.jpg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">Ambient Pop</a></h4>
-										<span><a href="artist.php">AudioPizza</a></span>
-									</div>
-									<span class="single-item__time">3:02</span>
-								</li>
+								<?php } ?>
 							</ul>
 						</div>
 					</div>
@@ -598,38 +545,6 @@ $row = mysqli_fetch_array($res);
 					</div>
 				</div>
 			</section>
-
-			<!-- partners -->
-			<div class="row">
-				<div class="col-12">
-					<div class="partners owl-carousel">
-						<a href="#" class="partners__img">
-							<img src="img/partners/3docean-light-background.png" alt="">
-						</a>
-
-						<a href="#" class="partners__img">
-							<img src="img/partners/activeden-light-background.png" alt="">
-						</a>
-
-						<a href="#" class="partners__img">
-							<img src="img/partners/audiojungle-light-background.png" alt="">
-						</a>
-
-						<a href="#" class="partners__img">
-							<img src="img/partners/codecanyon-light-background.png" alt="">
-						</a>
-
-						<a href="#" class="partners__img">
-							<img src="img/partners/photodune-light-background.png" alt="">
-						</a>
-
-						<a href="#" class="partners__img">
-							<img src="img/partners/themeforest-light-background.png" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-			<!-- end partners -->
 		</div>
 	</main>
 	<!-- end main content -->

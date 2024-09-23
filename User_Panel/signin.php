@@ -218,7 +218,7 @@ if(isset($_POST['signIn'])){
 								
 								<span class="sign__text">Don't have an account? <a href="phpmailer/signup.php">Sign up!</a></span>
 
-								<span class="sign__text"><a href="forgot.php">Forgot password?</a></span>
+								<span class="sign__text"><a href="phpmailer/forgot.php">Forgot password?</a></span>
 							</form>
 							<!-- end authorization form -->
 						</div>
