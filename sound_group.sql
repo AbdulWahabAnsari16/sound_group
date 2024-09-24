@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2024 at 01:39 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Sep 24, 2024 at 09:43 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `a_name` varchar(50) NOT NULL,
   `a_email` text NOT NULL,
   `a_pass` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
@@ -52,7 +52,18 @@ CREATE TABLE `album` (
   `alb_name` varchar(255) NOT NULL,
   `art_id` int(11) NOT NULL,
   `alb_c_img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `album`
+--
+
+INSERT INTO `album` (`alb_id`, `alb_name`, `art_id`, `alb_c_img`) VALUES
+(1, 'Aadat', 1, 'Atif_aslam_Album_cover.jpg'),
+(2, 'Jhoom', 2, 'Ali_zafar_album_Cover.jpg'),
+(3, 'Wajah tum ho', 3, 'Arijit_Singh_Album_cover.jpg'),
+(4, 'Open Letter', 4, 'Talha_Anjum_Album_cover.jpg'),
+(5, 'After Hours', 5, 'The_weeknd_alb_cover.jpg');
 
 -- --------------------------------------------------------
 
@@ -64,7 +75,7 @@ CREATE TABLE `artist` (
   `art_id` int(11) NOT NULL,
   `art_name` varchar(100) NOT NULL,
   `art_img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `artist`
@@ -87,7 +98,7 @@ CREATE TABLE `genre` (
   `gen_id` int(11) NOT NULL,
   `gen_name` varchar(50) NOT NULL,
   `art_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `genre`
@@ -109,7 +120,7 @@ INSERT INTO `genre` (`gen_id`, `gen_name`, `art_id`) VALUES
 CREATE TABLE `language` (
   `lang_id` int(11) NOT NULL,
   `lang_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `language`
@@ -133,9 +144,10 @@ CREATE TABLE `music` (
   `art_id` int(11) NOT NULL,
   `year` varchar(50) NOT NULL,
   `gen_id` int(11) NOT NULL,
-  `language` varchar(50) NOT NULL,
+  `lang_id` int(11) NOT NULL,
+  `alb_id` int(11) DEFAULT NULL,
   `mus_file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -150,15 +162,14 @@ CREATE TABLE `user` (
   `u_password` varchar(100) NOT NULL,
   `u_v_code` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`u_id`, `u_name`, `u_email`, `u_password`, `u_v_code`, `created_at`) VALUES
-(1, 'Abdul Wahab', 'abdulwahabb11023@gmail.com', '$2y$10$L2teAH9LOHaKmm8rvjaTzeAvdgk5lgOvioa8UPyK15uoG/1xkhMYS', 'XQL8rJ', '2024-09-20 05:47:56'),
-(2, 'Abdul Qadir', 'abdulwahabb11023@gmail.com', '$2y$10$shFs1b91XDLmEq5FR1Qb9OF6FtipEMJ5nF/3aeFnLvIA3aH1De41W', 'uK33Yy', '2024-09-20 05:54:35');
+(1, 'Abdul Wahab', 'abdulwahabb11023@gmail.com', '$2y$10$QgOa7HcJrmaD6S0iGC1mm.x/.7JhcRsuPoRw7K/0CAu./FeeVy1.u', '255209', '2024-09-24 06:32:14');
 
 -- --------------------------------------------------------
 
@@ -174,7 +185,7 @@ CREATE TABLE `video` (
   `gen_id` int(11) NOT NULL,
   `language` int(50) NOT NULL,
   `vid_file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -190,7 +201,8 @@ ALTER TABLE `admin`
 -- Indexes for table `album`
 --
 ALTER TABLE `album`
-  ADD PRIMARY KEY (`alb_id`);
+  ADD PRIMARY KEY (`alb_id`),
+  ADD KEY `art_id` (`art_id`);
 
 --
 -- Indexes for table `artist`
@@ -243,7 +255,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `alb_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `alb_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `artist`
@@ -273,7 +285,7 @@ ALTER TABLE `music`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `video`
@@ -284,6 +296,12 @@ ALTER TABLE `video`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `album`
+--
+ALTER TABLE `album`
+  ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`art_id`) REFERENCES `artist` (`art_id`);
 
 --
 -- Constraints for table `genre`

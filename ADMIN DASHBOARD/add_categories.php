@@ -26,8 +26,11 @@ $result2 = mysqli_query($conn,$fetchArt2);
 if(isset($_POST['addAlb'])){
     $albn = $_POST['albname'];
     $art1 =  $_POST['artist1'];
+    $albName = $_FILES['alb_c_img']['name'];
+    $albTmp = $_FILES['alb_c_img']['tmp_name'];
+    move_uploaded_file($albTmp,'albumcover/'.$albName);
     
-    $sqlAddAlb = "INSERT INTO `album`(`alb_name`,`art_id`) VALUES ('$albn','$art1')";
+    $sqlAddAlb = "INSERT INTO `album`(`alb_name`, `art_id`, `alb_c_img`) VALUES ('$albn','$art1','$albName')";
     $res2 = mysqli_query($conn,$sqlAddAlb);
     if($res2){
         echo "<script>window.location.href='add_categories.php'</script>";
