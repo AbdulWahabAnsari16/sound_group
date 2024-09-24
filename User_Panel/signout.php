@@ -2,5 +2,7 @@
 session_start();
 session_unset();
 session_destroy();
-header('Location: signin.php')
+echo "<script>
+    window.location.href = 'signin.php';
+  </script>";
 ?>
