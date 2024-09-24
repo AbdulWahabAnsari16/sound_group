@@ -1,7 +1,8 @@
 <?php 
 session_start();
 include 'conn.php';
-if(!$_SESSION['e']){
+if(!$_SESSION['e']) {
+
 	echo "<script>
     window.location.href = 'signin.php';
   </script>";

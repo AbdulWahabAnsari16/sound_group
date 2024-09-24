@@ -1,14 +1,18 @@
 <?php
+session_start();
 include 'conn.php'; 
 if(isset($_POST['verify'])){
     $code  = $_POST['vcode'];
     $sql = "SELECT * FROM `user` where u_v_code = '$code'";
     $res = mysqli_query($conn,$sql);
+	$row = mysqli_fetch_array($res);
     if(mysqli_num_rows($res)> 0){
+		$_SESSION['e'] = $row['u_email'];
         echo "<script>
     alert('Verified');
 	document.location.href = '../index.php'
 </script>";
+
     }
     else{
         echo "<script>
