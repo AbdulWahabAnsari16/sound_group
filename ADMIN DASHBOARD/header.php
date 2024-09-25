@@ -333,6 +333,12 @@
               <span class="menu-title">Add Video</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="all_users.php">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">All Users</span>
+            </a>
+          </li>
         </ul>
       </nav>
     <!-- partial -->
