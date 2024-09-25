@@ -1,5 +1,5 @@
 <?php
-include '../header.php';
+include 'header.php';
 ?>
 <!-- main content -->
 	<main class="main">
@@ -56,6 +56,6 @@ include '../header.php';
 
 	<!-- footer -->
 	<?php 
-	include '../footer.php'; 
+	include 'footer.php'; 
 	?>
 	<!-- end footer -->
