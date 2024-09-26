@@ -2,6 +2,12 @@
 session_start();
 include 'header.php';
 include 'conn.php';
+
+$id = $_GET['id'];
+$sqlSelect = "SELECT * FROM `artist` WHERE `art_id` = $id";
+$res = mysqli_query($conn,$sqlSelect);
+$row = mysqli_fetch_array($res);
+
 if(!$_SESSION['e']){
 	echo "<script>
     window.location.href = 'signin.php';
@@ -18,10 +24,10 @@ if(!$_SESSION['e']){
 						<!-- article content -->
 						<div class="article__content">
 							<div class="article__artist">
-								<img src="img/artists/artist1.jpg" alt="">
+								<img src="<?php echo "../ADMIN DASHBOARD/artistImg/".$row[2]; ?>" alt="" width="161" height="141">
 								<div>
-									<h1>Juice WRLD</h1>
-									<span>John Doe</span>
+									<h1><?php echo $row[1]; ?></h1>
+									<!-- <span>John Doe</span> -->
 									<p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 								</div>
 							</div>
@@ -38,7 +44,7 @@ if(!$_SESSION['e']){
 								<li>Code Canayon</li>
 							</ul>
 
-							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. <a href="#">Link</a> the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
 						</div>
 						<!-- end article content -->
 

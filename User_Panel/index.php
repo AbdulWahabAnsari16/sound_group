@@ -259,21 +259,19 @@ $res2 = mysqli_query($conn,$sqlSelect2);
 				<div class="col-12">
 					<div class="row row--grid">
 						<?php
-while($row1 = mysqli_fetch_array($res1)){
+						while($row1 = mysqli_fetch_array($res1)){
 						?>
 						<div class="col-6 col-sm-4 col-md-3 col-xl-2">
-							<a href="artist.php" class="artist">
+							<a href="artist.php?id=<?php echo $row1[0]; ?>" class="artist">
 								<div class="artist__cover">
 									<img src="<?php echo "../ADMIN DASHBOARD/artistImg/".$row1[2]; ?>" alt="" width="161" height="141">
-
 								</div>
 								<h3 class="artist__title"><?php echo $row1[1]; ?></h3>
 							</a>
 						</div>
-<?php
-}
-?>
-						
+						<?php
+							}
+						?>
 					<!-- <button class="main__load" type="button">Load more</button> -->
 					</div>
 				</div>
@@ -303,8 +301,8 @@ while($row1 = mysqli_fetch_array($res1)){
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
 									</a> -->
 									<div class="single-item__title">
-										<h4><a href="#"><?php echo $row2[1] ?></a></h4>
-										<span><a href="artist.php"><?php echo $row2[4] ?></a></span>
+										<h4><?php echo $row2[1] ?></h4>
+										<span><?php echo $row2[4] ?></span>
 									</div>
 									<span class="single-item__time">2:35</span>
 								</li>
