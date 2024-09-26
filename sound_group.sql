@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2024 at 08:52 AM
+-- Generation Time: Sep 26, 2024 at 09:22 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -101,16 +101,6 @@ CREATE TABLE `forgotpass` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `forgotpass`
---
-
-INSERT INTO `forgotpass` (`u_id`, `u_email`, `u_v_code`, `created_at`) VALUES
-(5, 'abdulwahabb11023@gmail.com', 121060, '2024-09-25 11:43:50'),
-(6, 'abdulwahabb11023@gmail.com', 304343, '2024-09-25 11:51:18'),
-(7, 'abdulwahabb11023@gmail.com', 479386, '2024-09-25 13:13:23'),
-(8, 'abdulwahabb11023@gmail.com', 573984, '2024-09-25 13:20:37');
-
 -- --------------------------------------------------------
 
 --
@@ -192,12 +182,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`u_id`, `u_name`, `u_email`, `u_password`, `u_v_code`, `created_at`) VALUES
-(1, 'Abdul Wahab', 'abdulwahabb11023@gmail.com', '$2y$10$ZNstNHMsmnlDRFfc0e9uxeZMJHOlcyRyUaLxOhkoqd.SXvG.ge6ke', '449557', '2024-09-25 11:22:45'),
-(2, 'tyb', 'trextayyab@gmail.com', '$2y$10$8zfUsBX/B8MWQPeJlC9Mw.KzF/fyb6FmrEY4d/4cgtW/CCkd3KerG', '817700', '2024-09-26 06:30:49'),
-(3, 'tyb', 'trextayyab@gmail.com', '$2y$10$h.G8ukQoINPa4si3cEDlXeKXXcRO68P1XSdZvBE7f5PXzKIwozFXq', '182671', '2024-09-26 06:30:51'),
-(4, 'tyb', 'trextayyab@gmail.com', '$2y$10$0/HB87gB.AHxEzNHbyna6uRcMazWlhXlOvlcD7zUC9.R5upOAaEQ2', '063151', '2024-09-26 06:30:52'),
-(5, 'tyb', 'trextayyab@gmail.com', '$2y$10$Rp.ebn0h8PXPppmeHuPF8OM.jBMd807UzSMCIhdTK2RDE4dZypH9m', '520697', '2024-09-26 06:30:54'),
-(6, 'tyb', 'trextayyab@gmail.com', '$2y$10$8txEwEGxOsGLcxsrokxRFe02Bsg22p0qyWelYTLFnbqmoKYmFNKKG', '601218', '2024-09-26 06:30:54');
+(1, 'Abdul Wahab', 'abdulwahabb11023@gmail.com', '$2y$10$gvPKmBGvV0b9UeENc3pGLOzVO3fY9JjnweabiYYaHfNMKaQRuKvQG', '096689', '2024-09-26 07:06:23'),
+(2, 'Tayyab', 'trextayyab@gmail.com', '$2y$10$US7TDP2K1egNemTRXr3pu.g.KHZZQpilASO9ofgHsC8.3r/NJuECG', '839478', '2024-09-26 07:11:57');
 
 -- --------------------------------------------------------
 
@@ -301,7 +287,7 @@ ALTER TABLE `artist`
 -- AUTO_INCREMENT for table `forgotpass`
 --
 ALTER TABLE `forgotpass`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `genre`
@@ -325,7 +311,7 @@ ALTER TABLE `music`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `video`
