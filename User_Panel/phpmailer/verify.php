@@ -44,7 +44,7 @@ if(isset($_POST['verify'])){
 							<!-- authorization form -->
 							<form action="" class="sign__form" method="post">
 								<a href="index.php" class="sign__logo">
-									<img src="icon/favicon-32x32.png" alt="" height="75">
+									<img src="../icon/favicon-32x32.png" alt="" height="75">
 								</a>
 
 								<div class="sign__group">

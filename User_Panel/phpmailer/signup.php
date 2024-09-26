@@ -20,7 +20,7 @@ include 'header.php';
 						<div class="sign__content">
 							<form action="send.php" method="post" class="sign__form">
 								<a href="../index.php" class="sign__logo">
-									<img src="icon/favicon-32x32.png" alt="" height="75">
+									<img src="../icon/favicon-32x32.png" alt="" height="75">
 								</a>
 
 								<div class="sign__group">
