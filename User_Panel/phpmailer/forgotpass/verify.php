@@ -190,7 +190,7 @@ if(isset($_POST['verify'])){
 								<div class="sign__group">
 									<input type="text" class="sign__input" placeholder="Enter Verification Code" name="vcode" required>
 								</div>
-								<!-- <h3>Check out your email and get your verification code</h3> -->
+								<h4 style="color:white;">Check out your email and get your verification code.</h4>
                                 <button class="sign__btn" type="submit" name="verify">Verify</button>
 							</form>
 							<!-- end authorization form -->

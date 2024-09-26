@@ -88,6 +88,11 @@
 					</a>
 				</div>
 			</div>
+			<button class="header__btn" type="button">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
 		</div>
 	</header>
 	<!-- end header -->
