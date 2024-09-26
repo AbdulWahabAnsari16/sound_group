@@ -1,12 +1,23 @@
 <?php 
+session_start();
 include 'header.php';
 include 'conn.php';
+
+if($_SESSION['e']){
 $sqlSelect1 = "SELECT * FROM `artist`";
 $res1 = mysqli_query($conn,$sqlSelect1);
-$row1 = mysqli_fetch_array($res1);
+
 
 $sqlSelect2 = "SELECT * FROM genre,artist WHERE  genre.art_id = artist.art_id ";
 $res2 = mysqli_query($conn,$sqlSelect2);
+}else{
+	$sqlSelect1 = "SELECT * FROM `artist` limit 2";
+$res1 = mysqli_query($conn,$sqlSelect1);
+
+
+$sqlSelect2 = "SELECT * FROM genre,artist WHERE  genre.art_id = artist.art_id";
+$res2 = mysqli_query($conn,$sqlSelect2);
+}
 ?>
 	<!-- main content -->
 	<main class="main">
@@ -247,23 +258,22 @@ $res2 = mysqli_query($conn,$sqlSelect2);
 			<div class="row row--grid">
 				<div class="col-12">
 					<div class="row row--grid">
+						<?php
+while($row1 = mysqli_fetch_array($res1)){
+						?>
 						<div class="col-6 col-sm-4 col-md-3 col-xl-2">
 							<a href="artist.php" class="artist">
 								<div class="artist__cover">
-									<img src="<?php echo "../ADMIN DASHBOARD/artistImg/".$row1[2]; ?>" alt="">
-								</div>
-								<h3 class="artist__title"><?php echo $row1[1]; ?></h3>
-							</a>
-						</div>
+									<img src="<?php echo "../ADMIN DASHBOARD/artistImg/".$row1[2]; ?>" alt="" width="161" height="141">
 
-						<div class="col-6 col-sm-4 col-md-3 col-xl-2">
-							<a href="artist.php" class="artist">
-								<div class="artist__cover">
-									<img src="<?php echo "../ADMIN DASHBOARD/artistImg/".$row1[2]; ?>" alt="">
 								</div>
 								<h3 class="artist__title"><?php echo $row1[1]; ?></h3>
 							</a>
 						</div>
+<?php
+}
+?>
+						
 					<!-- <button class="main__load" type="button">Load more</button> -->
 					</div>
 				</div>
