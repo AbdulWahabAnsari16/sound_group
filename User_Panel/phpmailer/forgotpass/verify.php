@@ -115,16 +115,11 @@ if(isset($_POST['verify'])){
 
 				<div class="collapse" id="collapseMenu1">
 					<ul class="sidebar__menu sidebar__menu--scroll">
-						<li><a href="../../artist.php">Artist</a></li>
-						<li><a href="../../release.php">Release</a></li>
+						<li><a href="../../release.php">Albums</a></li>
 						<li><a href="../../profile.php">Profile</a></li>
 						<li><a href="../../about.php">About</a></li>
 						<li><a href="../../contacts.php">Contacts</a></li>
 						<li><a href="../../privacy.php">Privacy policy</a></li>
-						<!-- <li><a href="signin.php">Sign in</a></li>
-						<li><a href="signup.php">Sign up</a></li>
-						<li><a href="phpmailer/forgot.php">Forgot password</a></li> -->
-						<li><a href="../../404.php">404 Page</a></li>
 					</ul>
 				</div>
 			</li>
