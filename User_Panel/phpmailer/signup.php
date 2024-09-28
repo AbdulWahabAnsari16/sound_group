@@ -37,7 +37,7 @@ include 'header.php';
 
 								<div class="sign__group sign__group--checkbox">
 									<input id="remember" name="remember" type="checkbox" checked="checked">
-									<label for="remember">I agree to the <a href="privacy.php">Privacy Policy</a></label>
+									<label for="remember">I agree to the <a href="../privacy.php">Privacy Policy</a></label>
 								</div>
 								
 								<button class="sign__btn" type="submit" name="send">Sign up</button>
