@@ -454,18 +454,18 @@ if(!$_SESSION['e']){
 											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 												<div class="sign__group">
 													<label class="sign__label" for="username">Name</label>
-													<input id="username" type="text" name="username" class="sign__input" value="<?php echo$row[1] ?>">
+													<input id="username" type="text" name="username" class="sign__input" readonly value="<?php echo$row[1] ?>">
 												</div>
 											</div>
 
 											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 												<div class="sign__group">
 													<label class="sign__label" for="email">Email</label>
-													<input id="email" type="text" name="email" class="sign__input" readonly  value="<?php echo$row[2] ?>">
+													<input id="email" type="text" name="email" class="sign__input" readonly value="<?php echo$row[2] ?>">
 												</div>
 											</div>
 
-											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+											<!-- <div class="col-12 col-md-6 col-lg-12 col-xl-6">
 												<div class="sign__group">
 													<label class="sign__label" for="firstname">First name</label>
 													<input id="firstname" type="text" name="firstname" class="sign__input" placeholder="John">
@@ -481,7 +481,7 @@ if(!$_SESSION['e']){
 
 											<div class="col-12">
 												<button class="sign__btn" type="button">Save</button>
-											</div>
+											</div> -->
 										</div>
 									</form>
 								</div>
