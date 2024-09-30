@@ -3,7 +3,7 @@ session_start();
 include 'header.php';
 include 'conn.php';
 
-$sqlSelect = "SELECT * FROM `artist`";
+$sqlSelect = "SELECT * FROM `artist` limit 5";
 $res = mysqli_query($conn,$sqlSelect);
 if(!$_SESSION['e']) {
 	echo "<script>

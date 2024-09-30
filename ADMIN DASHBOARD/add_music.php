@@ -26,11 +26,11 @@ if(isset($_POST['addMus'])){
     $mus_Tmp = $_FILES['mus_file']['tmp_name'];
     move_uploaded_file($mus_Tmp,"music/".$mus_Name);
 
-    $sqlAddMus = "INSERT INTO `music`(`title`, `art_id`, `year`, `gen_id`, `language`, `alb_id`, `mus_file`) VALUES ('$title','$art','$year','$gen','$lang','$alb','$mus_Name')";
+    $sqlAddMus = "INSERT INTO `music`(`title`, `art_id`, `year`, `gen_id`, `lang_id`, `alb_id`, `mus_file`) VALUES ('$title','$art','$year','$gen','$lang','$alb','$mus_Name')";
     $result1 = mysqli_query($conn,$sqlAddMus);
     if($result1){
         echo "<script>
-        window.location.href='index.php'
+        window.location.href='add_music.php'
         </script>";
     }
 }
@@ -95,8 +95,6 @@ if(isset($_POST['addMus'])){
                                         <div class="form-group">
                                             <label for="">Select Album</label>
                                             <select name="alb" id="" class="form-control" >
-                                                <option value="">Albums</option>
-                                                <option value="">Null</option>
                                                 <?php
                                                     while($row4 = mysqli_fetch_array($resultAlb)){
                                                 ?>

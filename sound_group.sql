@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2024 at 09:22 AM
+-- Generation Time: Sep 30, 2024 at 02:10 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -63,7 +63,8 @@ INSERT INTO `album` (`alb_id`, `alb_name`, `art_id`, `alb_c_img`) VALUES
 (2, 'Jhoom', 2, 'Ali_zafar_album_Cover.jpg'),
 (3, 'Wajah tum ho', 3, 'Arijit_Singh_Album_cover.jpg'),
 (4, 'Open Letter', 4, 'Talha_Anjum_Album_cover.jpg'),
-(5, 'After Hours', 5, 'The_weeknd_alb_cover.jpg');
+(5, 'After Hours', 5, 'The_weeknd_alb_cover.jpg'),
+(6, 'No Album', 6, '');
 
 -- --------------------------------------------------------
 
@@ -86,7 +87,8 @@ INSERT INTO `artist` (`art_id`, `art_name`, `art_img`) VALUES
 (2, 'Ali Zafar', 'ali_zafar.jpg.jpg'),
 (3, 'Arijit Singh', 'arijit_singh.jpg.jpg'),
 (4, 'Talha Anjum', 'talha_anjum.jpg.jpg'),
-(5, 'The Weeknd', 'the_weeknd.jpg.jpg');
+(5, 'The Weeknd', 'the_weeknd.jpg.jpg'),
+(6, 'No Artist', 'abc');
 
 -- --------------------------------------------------------
 
@@ -161,6 +163,37 @@ CREATE TABLE `music` (
   `alb_id` int(11) DEFAULT NULL,
   `mus_file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `music`
+--
+
+INSERT INTO `music` (`mus_id`, `title`, `art_id`, `year`, `gen_id`, `lang_id`, `alb_id`, `mus_file`) VALUES
+(1, 'Tere Bin', 1, '2010', 1, 1, 6, 'Atif Aslam 1_Tere Bin(MP3_160K).mp3'),
+(2, 'Khair mangda', 1, '2011', 1, 4, 6, 'Atif Aslam 2_Khair mangda(MP3_160K).mp3'),
+(3, 'Hona tha pyar', 1, '2008', 1, 1, 6, 'Atif Aslam 3_Hona tha pyar(MP3_160K).mp3'),
+(4, 'Tajdar e haram(', 1, '2015', 1, 1, 6, 'Atif Aslam 4_Tajdar e haram(MP3_160K).mp3'),
+(5, 'Agey Dekh', 1, '2022', 1, 1, 6, 'Atif Aslam 5_Agey dekh(MP3_160K).mp3'),
+(6, 'Larsha Pekhawar', 2, '2020', 2, 1, 6, 'Ali Zafar 1_Larsha pekhawar(MP3_160K).mp3'),
+(7, 'Dil Se Jan Laga De', 2, '2015', 2, 1, 6, 'Ali Zafar 2_Dil SE Jan laga de(MP3_160K).mp3'),
+(8, 'Main Nahi Hoon', 2, '2019', 2, 1, 6, 'Ali Zafar 3_main nahi hoon(MP3_160K).mp3'),
+(9, 'Husn', 2, '2018', 2, 1, 6, 'Ali Zafar 4_Husn(MP3_160K).mp3'),
+(10, 'Jhoom', 2, '2017', 2, 1, 6, 'Ali Zafar 5_Jhoom(MP3_160K).mp3'),
+(11, 'Ve Kamleya', 3, '2023', 3, 3, 6, 'Arijit Singh 1_Ve kamleya(MP3_160K).mp3'),
+(12, 'Tenu Khabar Nahi', 3, '2021', 3, 4, 6, 'Arijit Singh 2_Tenu Khabar nhi(MP3_160K).mp3'),
+(13, 'Khariyat', 3, '2020', 3, 3, 6, 'Arijit Singh 3_Khariyat(MP3_160K).mp3'),
+(14, 'Dil Sambhal Ja Zara', 3, '2017', 3, 3, 6, 'Arijit Singh 4_Dil sambhal ja zara(MP3_160K).mp3'),
+(15, 'Hamdard', 3, '2016', 3, 3, 6, 'Arijit Singh 5_Hamdard(MP3_160K).mp3'),
+(16, 'Agency', 4, '2022', 4, 1, 6, 'Agency_Talha_Anjum.mp3'),
+(17, 'Downers At Dusk', 4, '2023', 4, 1, 6, 'Downers At Dusk - Talha Anjum.mp3'),
+(18, 'Happy Hour', 4, '2023', 4, 1, 6, 'happy_hour_talha_anjum.mp3'),
+(19, 'Kattar Karachi', 4, '2024', 4, 1, 6, 'Kattar_Karachi_Talha_Anjum.mp3'),
+(20, 'Karachi Mera', 4, '2019', 4, 1, 6, 'Talha_Anjum_Karachi_Mera.mp3'),
+(21, 'Starboy', 5, '2018', 5, 2, 6, 'The weekend 1_Starboy(MP3_160K).mp3'),
+(22, 'Save Your Tears', 5, '2015', 5, 2, 6, 'The weekend 2 _Save your tears(MP3_160K).mp3'),
+(23, 'Blinding Lights', 5, '2020', 5, 2, 6, 'The weekend 3_Blinding lights (MP3_160K).mp3'),
+(24, 'Cant Feel My Face', 5, '2021', 5, 2, 6, 'The weekend 4_Can_t feel my face (MP3_160K).mp3'),
+(25, 'Reminder', 5, '2023', 5, 2, 6, 'The weekend 5_Reminder(MP3_160K).mp3');
 
 -- --------------------------------------------------------
 
@@ -247,7 +280,11 @@ ALTER TABLE `language`
 -- Indexes for table `music`
 --
 ALTER TABLE `music`
-  ADD PRIMARY KEY (`mus_id`);
+  ADD PRIMARY KEY (`mus_id`),
+  ADD KEY `art_id` (`art_id`),
+  ADD KEY `gen_id` (`gen_id`),
+  ADD KEY `lang_id` (`lang_id`),
+  ADD KEY `alb_id` (`alb_id`);
 
 --
 -- Indexes for table `user`
@@ -275,13 +312,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `alb_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `alb_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `artist`
 --
 ALTER TABLE `artist`
-  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `forgotpass`
@@ -305,7 +342,7 @@ ALTER TABLE `language`
 -- AUTO_INCREMENT for table `music`
 --
 ALTER TABLE `music`
-  MODIFY `mus_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -334,6 +371,15 @@ ALTER TABLE `album`
 --
 ALTER TABLE `genre`
   ADD CONSTRAINT `genre_ibfk_1` FOREIGN KEY (`art_id`) REFERENCES `artist` (`art_id`);
+
+--
+-- Constraints for table `music`
+--
+ALTER TABLE `music`
+  ADD CONSTRAINT `music_ibfk_1` FOREIGN KEY (`art_id`) REFERENCES `artist` (`art_id`),
+  ADD CONSTRAINT `music_ibfk_2` FOREIGN KEY (`gen_id`) REFERENCES `genre` (`gen_id`),
+  ADD CONSTRAINT `music_ibfk_3` FOREIGN KEY (`lang_id`) REFERENCES `language` (`lang_id`),
+  ADD CONSTRAINT `music_ibfk_4` FOREIGN KEY (`alb_id`) REFERENCES `album` (`alb_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

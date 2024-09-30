@@ -2,7 +2,7 @@
 session_start();
 include 'header.php';
 include 'conn.php';
-$sql = "SELECT * FROM `album`,artist WHERE album.art_id = artist.art_id ";
+$sql = "SELECT * FROM `album`,artist WHERE album.art_id = artist.art_id limit 5";
 $res = mysqli_query($conn,$sql);
 if(!$_SESSION['e']){
 	echo "<script>
