@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2024 at 02:10 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Oct 01, 2024 at 07:46 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `a_name` varchar(50) NOT NULL,
   `a_email` text NOT NULL,
   `a_pass` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
@@ -52,7 +52,7 @@ CREATE TABLE `album` (
   `alb_name` varchar(255) NOT NULL,
   `art_id` int(11) NOT NULL,
   `alb_c_img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `album`
@@ -76,7 +76,7 @@ CREATE TABLE `artist` (
   `art_id` int(11) NOT NULL,
   `art_name` varchar(100) NOT NULL,
   `art_img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `artist`
@@ -88,7 +88,8 @@ INSERT INTO `artist` (`art_id`, `art_name`, `art_img`) VALUES
 (3, 'Arijit Singh', 'arijit_singh.jpg.jpg'),
 (4, 'Talha Anjum', 'talha_anjum.jpg.jpg'),
 (5, 'The Weeknd', 'the_weeknd.jpg.jpg'),
-(6, 'No Artist', 'abc');
+(6, 'No Artist', 'abc'),
+(7, 'Atif Aslam', 'atif_aslam.jpg');
 
 -- --------------------------------------------------------
 
@@ -101,7 +102,14 @@ CREATE TABLE `forgotpass` (
   `u_email` text NOT NULL,
   `u_v_code` int(6) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `forgotpass`
+--
+
+INSERT INTO `forgotpass` (`u_id`, `u_email`, `u_v_code`, `created_at`) VALUES
+(1, 'abdulwahabb11023@gmail.com', 524351, '2024-10-01 05:22:53');
 
 -- --------------------------------------------------------
 
@@ -113,7 +121,7 @@ CREATE TABLE `genre` (
   `gen_id` int(11) NOT NULL,
   `gen_name` varchar(50) NOT NULL,
   `art_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `genre`
@@ -135,7 +143,7 @@ INSERT INTO `genre` (`gen_id`, `gen_name`, `art_id`) VALUES
 CREATE TABLE `language` (
   `lang_id` int(11) NOT NULL,
   `lang_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `language`
@@ -162,7 +170,7 @@ CREATE TABLE `music` (
   `lang_id` int(11) NOT NULL,
   `alb_id` int(11) DEFAULT NULL,
   `mus_file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `music`
@@ -208,15 +216,14 @@ CREATE TABLE `user` (
   `u_password` varchar(100) NOT NULL,
   `u_v_code` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`u_id`, `u_name`, `u_email`, `u_password`, `u_v_code`, `created_at`) VALUES
-(1, 'Abdul Wahab', 'abdulwahabb11023@gmail.com', '$2y$10$gvPKmBGvV0b9UeENc3pGLOzVO3fY9JjnweabiYYaHfNMKaQRuKvQG', '096689', '2024-09-26 07:06:23'),
-(2, 'Tayyab', 'trextayyab@gmail.com', '$2y$10$US7TDP2K1egNemTRXr3pu.g.KHZZQpilASO9ofgHsC8.3r/NJuECG', '839478', '2024-09-26 07:11:57');
+(1, 'Abdul Wahab', 'abdulwahabb11023@gmail.com', '$2y$10$EC4FW0xpVIZLL0zAb3FvWeo2KBjJJFtC2oltHhgb4aT87NWUuK/Nm', '096689', '2024-09-26 07:06:23');
 
 -- --------------------------------------------------------
 
@@ -232,7 +239,7 @@ CREATE TABLE `video` (
   `gen_id` int(11) NOT NULL,
   `language` int(50) NOT NULL,
   `vid_file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -318,13 +325,13 @@ ALTER TABLE `album`
 -- AUTO_INCREMENT for table `artist`
 --
 ALTER TABLE `artist`
-  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `forgotpass`
 --
 ALTER TABLE `forgotpass`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `genre`
@@ -348,7 +355,7 @@ ALTER TABLE `music`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `video`
