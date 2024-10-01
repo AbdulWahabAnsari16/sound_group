@@ -3,13 +3,14 @@ session_start();
 include 'header.php';
 include 'conn.php';
 $id = $_GET['id'];
-
-if($_SESSION['e']){
-    
 $sqlSelect3 = "SELECT MIN(music.mus_id) AS mus_id, music.title, music.art_id, music.year, music.gen_id, music.lang_id, music.alb_id, music.mus_file, artist.art_name, artist.art_img FROM music JOIN artist ON music.art_id = artist.art_id WHERE mus_id = $id";
 $res3 = mysqli_query($conn,$sqlSelect3);
 $row3 = mysqli_fetch_array($res3);
-}
+if(!$_SESSION['e']){
+	echo "<script>
+    window.location.href = 'signin.php';
+  </script>";
+}else{
 ?>
 
 	<!-- player -->
@@ -28,5 +29,6 @@ $row3 = mysqli_fetch_array($res3);
 	<!-- end player -->
 
 	<?php
-	include 'footer.php'
+	include 'footer.php';
+}
 	?>
