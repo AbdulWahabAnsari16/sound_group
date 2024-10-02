@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="css/slider-radio.css">
 	<link rel="stylesheet" href="css/plyr.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">

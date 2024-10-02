@@ -21,7 +21,7 @@ if(!$_SESSION['e']){
 
 		<div class="player__content">
 			<span class="player__track"><b class="player__title"><?php echo $row3['title']; ?></b> – <span class="player__artist"><?php echo $row3['art_name']; ?></span></span>
-			<audio src="music/<?php echo $row3[7]; ?>" id="audio" controls></audio>
+			<audio src="music/<?php echo $row3['mus_file']; ?>" id="audio" controls></audio>
 		</div>
 	</div>
 
