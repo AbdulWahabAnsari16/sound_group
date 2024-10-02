@@ -144,7 +144,7 @@ if(isset($_POST['chgPass'])){
 								</a>
 
 								<div class="sign__group">
-									<input type="text" class="sign__input" placeholder="New Password" name="newpass" required>
+									<input type="password" class="sign__input" placeholder="New Password" name="newpass" required>
 								</div>
                                 <button class="sign__btn" type="submit" name="chgPass">Change </button>
 							</form>

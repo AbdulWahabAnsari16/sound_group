@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 include 'conn.php';
-$sqlSelect = "SELECT * FROM `user`";
+$sqlSelect = "SELECT * FROM `music`,`artist` WHERE music.art_id = artist.art_id";
 $res = mysqli_query($conn, $sqlSelect);
 ?>
 <style>
@@ -12,14 +12,14 @@ $res = mysqli_query($conn, $sqlSelect);
     <div class="grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <p class="card-title mb-0">All Users</p>
+                <p class="card-title mb-0">All Music</p>
                 <div class="table-responsive">
                     <table class="table table-striped table-borderless">
                         <thead>
                             <tr>
-                                <th>User ID</th>
-                                <th>User Name</th>
-                                <th>User Email</th>
+                                <th>Music ID</th>
+                                <th>Title</th>
+                                <th>Artist Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -29,10 +29,10 @@ $res = mysqli_query($conn, $sqlSelect);
                                 while ($row = mysqli_fetch_array($res)) { 
                             ?>
                                 <tr>
-                                    <td><?php echo $row[0]; ?></td>
-                                    <td><?php echo $row[1]; ?></td>
-                                    <td><?php echo $row[2]; ?></td>
-                                    <td><a class="btn btn-primary mr-2" href="delete.php?u_id=<?php echo $row[0]; ?>">Delete</a></td>
+                                    <td><?php echo $row['mus_id']; ?></td>
+                                    <td><?php echo $row['title']; ?></td>
+                                    <td><?php echo $row['art_name']; ?></td>
+                                    <td><a class="btn btn-primary mr-2" href="delete.php?mus_id=<?php echo $row[0]; ?>">Delete</a></td>
                                 </tr>
                             <?php
                                 }

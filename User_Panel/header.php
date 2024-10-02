@@ -97,7 +97,7 @@
 				<div class="collapse" id="collapseMenu1">
 					<ul class="sidebar__menu sidebar__menu--scroll">
 						<!-- <li><a href="artist.php">Artist</a></li> -->
-						<li><a href="release.php">Albums</a></li>
+						<li><a href="albums.php">Albums</a></li>
 						<li><a href="profile.php">Profile</a></li>
 						<li><a href="about.php">About</a></li>
 						<li><a href="contacts.php">Contacts</a></li>
