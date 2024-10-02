@@ -2,6 +2,8 @@
 session_start();
 include 'header.php';
 include 'conn.php';
+$id = $_GET['id'];
+$sql = "SELECT * FROM `album`,`music` WHERE album.alb_id = music.alb_id AND album.alb_id = $id";
 if(!$_SESSION['e']){
 	echo "<script>
     window.location.href = 'signin.php';
@@ -16,8 +18,8 @@ if(!$_SESSION['e']){
 				<div class="col-12">
 					<ul class="breadcrumb">
 						<li class="breadcrumb__item"><a href="index.php">Home</a></li>
-						<li class="breadcrumb__item"><a href="releases.php">Releases</a></li>
-						<li class="breadcrumb__item breadcrumb__item--active">Release</li>
+						<li class="breadcrumb__item"><a href="releases.php">Albums</a></li>
+						<li class="breadcrumb__item breadcrumb__item--active">Songs</li>
 					</ul>
 				</div>
 				<!-- end breadcrumb -->
