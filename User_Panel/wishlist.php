@@ -2,7 +2,7 @@
 session_start();
 include 'header.php';
 include 'conn.php';
-$sqlSelect = "SELECT * FROM `album`,`music` WHERE album.art_id = music.art_id AND album.art_id= 1";
+$sqlSelect = "";
 $res = mysqli_query($conn,$sqlSelect);
 $sqlSelect2 = "SELECT * FROM artist,album WHERE artist.art_id = album.art_id AND artist.art_id = 1";
 $res2 = mysqli_query($conn,$sqlSelect2);

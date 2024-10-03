@@ -6,12 +6,12 @@ $id = $_GET['id'];
 // $u_id = $_SESSION['u_id'];
 $sqlSelect = "SELECT * FROM `album`,`music` WHERE album.art_id = music.art_id AND album.art_id= $id";
 $res = mysqli_query($conn,$sqlSelect);
-$sqlSelect2 = "SELECT * FROM artist,album,music WHERE artist.art_id = album.art_id AND music.art_id = artist.art_id AND artist.art_id = $id";
+$sqlSelect2 = "SELECT * FROM artist,album WHERE artist.art_id = album.art_id AND artist.art_id = $id";
 $res2 = mysqli_query($conn,$sqlSelect2);
 $row2 = mysqli_fetch_array($res2);
 if(isset($_POST['wishList'])){
 	$u_id = $_SESSION['u_id'];
-	$musId = $row2['mus_id'];
+	$musId = $_POST['wishList'];
 	$sqlInsert = "INSERT INTO `wishlist`(`u_id`, `mus_id`) VALUES ('$u_id','$musId')";
 	$res3 = mysqli_query($conn,$sqlInsert);
 }
@@ -84,7 +84,7 @@ if(!$_SESSION['e']){
 										<span><a href="artist.php"><?php echo $row2['art_name']; ?></a></span>
 									</div>
 									<form method="post">
-									<button class="single-item__add" type="submit" name="wishList"><i class="fa-solid fa-heart"></i></button>
+									<button class="single-item__add" type="submit" name="wishList" value="<?php echo $row['mus_id']; ?>"><i class="fa-solid fa-heart"></i></button>
 									</form>
 									<a href="#" class="single-item__export">
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path></svg>
