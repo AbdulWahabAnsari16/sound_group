@@ -10,6 +10,7 @@ if(isset($_POST['signIn'])){
 	$row = mysqli_fetch_array($res);
 	if(mysqli_num_rows($res) > 0){
 		if(password_verify($pass,$row['u_password'])){
+			$_SESSION['u_id'] = $row['u_id'];
 			$_SESSION['n'] = $row['u_name'];
 			$_SESSION['e'] = $row['u_email'];
 			echo "<script>
