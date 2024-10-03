@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2024 at 08:13 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Oct 03, 2024 at 10:20 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `a_name` varchar(50) NOT NULL,
   `a_email` text NOT NULL,
   `a_pass` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
@@ -52,7 +52,7 @@ CREATE TABLE `album` (
   `alb_name` varchar(255) NOT NULL,
   `art_id` int(11) NOT NULL,
   `alb_c_img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `album`
@@ -76,7 +76,7 @@ CREATE TABLE `artist` (
   `art_id` int(11) NOT NULL,
   `art_name` varchar(100) NOT NULL,
   `art_img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `artist`
@@ -101,7 +101,7 @@ CREATE TABLE `forgotpass` (
   `u_email` text NOT NULL,
   `u_v_code` int(6) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,7 @@ CREATE TABLE `genre` (
   `gen_id` int(11) NOT NULL,
   `gen_name` varchar(50) NOT NULL,
   `art_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `genre`
@@ -135,7 +135,7 @@ INSERT INTO `genre` (`gen_id`, `gen_name`, `art_id`) VALUES
 CREATE TABLE `language` (
   `lang_id` int(11) NOT NULL,
   `lang_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `language`
@@ -162,7 +162,7 @@ CREATE TABLE `music` (
   `lang_id` int(11) NOT NULL,
   `alb_id` int(11) DEFAULT NULL,
   `mus_file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `music`
@@ -172,7 +172,7 @@ INSERT INTO `music` (`mus_id`, `title`, `art_id`, `year`, `gen_id`, `lang_id`, `
 (1, 'Tere Bin', 1, '2010', 1, 1, 6, 'Atif Aslam 1_Tere Bin(MP3_160K).mp3'),
 (2, 'Khair mangda', 1, '2011', 1, 4, 6, 'Atif Aslam 2_Khair mangda(MP3_160K).mp3'),
 (3, 'Hona tha pyar', 1, '2008', 1, 1, 6, 'Atif Aslam 3_Hona tha pyar(MP3_160K).mp3'),
-(4, 'Tajdar e haram(', 1, '2015', 1, 1, 6, 'Atif Aslam 4_Tajdar e haram(MP3_160K).mp3'),
+(4, 'Tajdar e haram\r\n', 1, '2015', 1, 1, 6, 'Atif Aslam 4_Tajdar e haram(MP3_160K).mp3'),
 (5, 'Agey Dekh', 1, '2022', 1, 1, 6, 'Atif Aslam 5_Agey dekh(MP3_160K).mp3'),
 (6, 'Larsha Pekhawar', 2, '2020', 2, 1, 6, 'Ali Zafar 1_Larsha pekhawar(MP3_160K).mp3'),
 (7, 'Dil Se Jan Laga De', 2, '2015', 2, 1, 6, 'Ali Zafar 2_Dil SE Jan laga de(MP3_160K).mp3'),
@@ -198,6 +198,19 @@ INSERT INTO `music` (`mus_id`, `title`, `art_id`, `year`, `gen_id`, `lang_id`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `rew_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `u_desc` longtext NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -208,7 +221,7 @@ CREATE TABLE `user` (
   `u_password` varchar(100) NOT NULL,
   `u_v_code` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
@@ -231,7 +244,20 @@ CREATE TABLE `video` (
   `gen_id` int(11) NOT NULL,
   `language` int(50) NOT NULL,
   `vid_file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `wish_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `mus_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -286,6 +312,13 @@ ALTER TABLE `music`
   ADD KEY `alb_id` (`alb_id`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`rew_id`),
+  ADD KEY `u_id` (`u_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -296,6 +329,14 @@ ALTER TABLE `user`
 --
 ALTER TABLE `video`
   ADD PRIMARY KEY (`vid_id`);
+
+--
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`wish_id`),
+  ADD KEY `u_id` (`u_id`),
+  ADD KEY `mus_id` (`mus_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -344,6 +385,12 @@ ALTER TABLE `music`
   MODIFY `mus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `rew_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
@@ -354,6 +401,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `video`
   MODIFY `vid_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -379,6 +432,19 @@ ALTER TABLE `music`
   ADD CONSTRAINT `music_ibfk_2` FOREIGN KEY (`gen_id`) REFERENCES `genre` (`gen_id`),
   ADD CONSTRAINT `music_ibfk_3` FOREIGN KEY (`lang_id`) REFERENCES `language` (`lang_id`),
   ADD CONSTRAINT `music_ibfk_4` FOREIGN KEY (`alb_id`) REFERENCES `album` (`alb_id`);
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`mus_id`) REFERENCES `music` (`mus_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
