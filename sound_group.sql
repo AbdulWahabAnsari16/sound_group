@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2024 at 07:46 AM
+-- Generation Time: Oct 03, 2024 at 08:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -88,8 +88,7 @@ INSERT INTO `artist` (`art_id`, `art_name`, `art_img`) VALUES
 (3, 'Arijit Singh', 'arijit_singh.jpg.jpg'),
 (4, 'Talha Anjum', 'talha_anjum.jpg.jpg'),
 (5, 'The Weeknd', 'the_weeknd.jpg.jpg'),
-(6, 'No Artist', 'abc'),
-(7, 'Atif Aslam', 'atif_aslam.jpg');
+(6, 'No Artist', 'abc');
 
 -- --------------------------------------------------------
 
@@ -103,13 +102,6 @@ CREATE TABLE `forgotpass` (
   `u_v_code` int(6) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `forgotpass`
---
-
-INSERT INTO `forgotpass` (`u_id`, `u_email`, `u_v_code`, `created_at`) VALUES
-(1, 'abdulwahabb11023@gmail.com', 524351, '2024-10-01 05:22:53');
 
 -- --------------------------------------------------------
 
@@ -331,7 +323,7 @@ ALTER TABLE `artist`
 -- AUTO_INCREMENT for table `forgotpass`
 --
 ALTER TABLE `forgotpass`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `genre`
