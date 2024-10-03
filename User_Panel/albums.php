@@ -56,7 +56,7 @@ if(!$_SESSION['e']){
 									</span> -->
 								</div>
 								<div class="album__title">
-									<h3><a href="release.php"><?php echo $row['alb_name']; ?></a></h3>
+									<h3><a href="release.php?id=<?php echo $row['alb_id']; ?>"><?php echo $row['alb_name']; ?></a></h3>
 									<span><?php echo $row['art_name']; ?></span>
 								</div>
 							</div>

@@ -2,9 +2,10 @@
 session_start();
 include 'header.php';
 include 'conn.php';
-$sqlSelect = "";
+$sqlSelect = "SELECT * FROM `wishlist`,user,music,artist WHERE wishlist.u_id = user.u_id AND wishlist.mus_id = music.mus_id AND music.art_id = artist.art_id";
 $res = mysqli_query($conn,$sqlSelect);
-$sqlSelect2 = "SELECT * FROM artist,album WHERE artist.art_id = album.art_id AND artist.art_id = 1";
+
+$sqlSelect2 = "SELECT * FROM `wishlist`,user,music,artist WHERE wishlist.u_id = user.u_id AND wishlist.mus_id = music.mus_id AND music.art_id = artist.art_id";
 $res2 = mysqli_query($conn,$sqlSelect2);
 $row2 = mysqli_fetch_array($res2);
 if(!$_SESSION['e']){
@@ -20,8 +21,8 @@ if(!$_SESSION['e']){
 		</div>
 
 		<div class="player__content">
-			<span class="player__track"><b class="player__title">Epic Cinematic</b> – <span class="player__artist"><?php echo $row2['art_name']; ?></span></span>
-			<audio src="http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3" id="audio" controls></audio>
+			<span class="player__track"><b class="player__title"><?php echo $row2['title']; ?></b> – <span class="player__artist"><?php echo $row2['art_name']; ?></span></span>
+			<audio src="music/<?php echo $row2['mus_file']; ?>" id="audio" controls></audio>
 		</div>
 	</div>
 
@@ -53,7 +54,7 @@ if(!$_SESSION['e']){
 							<ul class="main__list main__list--playlist main__list--dashbox">
 								<?php while($row = mysqli_fetch_array($res)){ ?>
 								<li class="single-item">
-									<a data-playlist data-title="<?php echo $row['title'] ?>" data-artist="<?php echo $row2['art_name'] ?>" data-img="img/covers/cover.svg" href="music/<?php echo $row['mus_file']; ?>" id="audio"
+									<a data-playlist data-title="<?php echo $row['title'] ?>" data-artist="<?php echo $row['art_name'] ?>" data-img="img/covers/cover.svg" href="music/<?php echo $row['mus_file']; ?>" id="audio"
 									class="single-item__cover">
 										<img src="img/covers/cover.svg" alt="">
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
@@ -61,7 +62,7 @@ if(!$_SESSION['e']){
 									</a>
 									<div class="single-item__title">
 										<h4><a href="#"><?php echo $row['title'] ?></a></h4>
-										<span><a href="artist.php"><?php echo $row2['art_name']; ?></a></span>
+										<span><a href="artist.php"><?php echo $row['art_name']; ?></a></span>
 									</div>
 									<!-- <a href="#" class="single-item__add">
 										<i class="fa-solid fa-heart"></i> -->

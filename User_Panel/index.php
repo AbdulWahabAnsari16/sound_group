@@ -84,8 +84,8 @@ $res6 = mysqli_query($conn,$sqlSelect5);
 							</a>
 						</div>
 						<div class="album__title">
-							<h3><a href="release.php"><?php echo $row3['title']; ?></a></h3>
-							<span><a href="artist.php"><?php echo $row3['art_name']; ?></a></span>
+							<h3><?php echo $row3['title']; ?></h3>
+							<span><a href="artist.php?id=<?php echo $row3['art_id'] ?>"><?php echo $row3['art_name']; ?></a></span>
 						</div>
 					</div>
 				</div>
