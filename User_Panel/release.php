@@ -80,7 +80,7 @@ if(!$_SESSION['e']){
 									</a>
 									<div class="single-item__title">
 										<h4><a href="#"><?php echo $row['title'] ?></a></h4>
-										<span><a href="artist.php"><?php echo $row2['art_name']; ?></a></span>
+										<span><a href="artist.php?id=<?php echo $row2['art_id']; ?>"><?php echo $row2['art_name']; ?></a></span>
 									</div>
 									<form method="post">
 									<button class="single-item__add" type="submit" name="wishList" value="<?php echo $row['mus_id']; ?>"><i class="fa-solid fa-heart"></i></button>

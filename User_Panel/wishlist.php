@@ -84,12 +84,14 @@ if (!$_SESSION['e']) {
 									}
 								} else {
 									?>
-									<div class="col-12">
+									<!-- <div class="col-12">
 										<div class="main__title main__title--page">
 											<h3>No Data Found</h1>
-											<?php } ?>
+											
 										</div>
-									</div>
+									</div> -->
+									<li class="comments__item comments__text">No Data Found</li>
+								<?php } ?>
 							</ul>
 						</div>
 					</div>
