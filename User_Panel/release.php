@@ -3,13 +3,13 @@ session_start();
 include 'header.php';
 include 'conn.php';
 $id = $_GET['id'];
+$u_id = $_SESSION['u_id'];
 $sqlSelect = "SELECT * FROM `album`,`music` WHERE album.art_id = music.art_id AND album.art_id= $id";
 $res = mysqli_query($conn,$sqlSelect);
 $sqlSelect2 = "SELECT * FROM artist,album WHERE artist.art_id = album.art_id AND artist.art_id = $id";
 $res2 = mysqli_query($conn,$sqlSelect2);
 $row2 = mysqli_fetch_array($res2);
 if(isset($_POST['wishList'])){
-	$u_id = $_SESSION['u_id'];
 	$musId = $_POST['wishList'];
 	$sqlInsert = "INSERT INTO `wishlist`(`u_id`, `mus_id`) VALUES ('$u_id','$musId')";
 	$res3 = mysqli_query($conn,$sqlInsert);
@@ -100,7 +100,7 @@ if(!$_SESSION['e']){
 					<div class="article">
 						<!-- article content -->
 						<div class="article__content">
-							<h4>About new album</h4>
+							<h4>About new album </h4>
 
 							<p>There are many <b>variations</b> of passages of Lorem Ipsum available, but the majority have <a href="#">suffered</a> alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
 

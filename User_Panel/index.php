@@ -3,10 +3,8 @@ session_start();
 include 'header.php';
 include 'conn.php';
 
-if ($_SESSION['e']) {
 	$sqlSelect1 = "SELECT * FROM `artist` limit 5";
 	$res1 = mysqli_query($conn, $sqlSelect1);
-
 
 	$sqlSelect2 = "SELECT * FROM genre,artist WHERE  genre.art_id = artist.art_id ";
 	$res2 = mysqli_query($conn, $sqlSelect2);
@@ -14,14 +12,6 @@ if ($_SESSION['e']) {
 	$sqlSelect4 = "SELECT MIN(music.mus_id) AS mus_id, music.title, music.art_id, music.year, music.gen_id, music.lang_id, music.alb_id, music.mus_file, artist.art_name, artist.art_img FROM music JOIN artist ON music.art_id = artist.art_id GROUP BY artist.art_name ";
 	$res4 = mysqli_query($conn, $sqlSelect4);
 	$row4 = mysqli_fetch_array($res4);
-} else {
-	$sqlSelect1 = "SELECT * FROM `artist` limit 2";
-	$res1 = mysqli_query($conn, $sqlSelect1);
-
-
-	$sqlSelect2 = "SELECT * FROM genre,artist WHERE  genre.art_id = artist.art_id";
-	$res2 = mysqli_query($conn, $sqlSelect2);
-}
 
 if(isset($_POST['revAdd'])){
 	$u_id = $_SESSION['u_id'];
@@ -55,7 +45,7 @@ $res6 = mysqli_query($conn,$sqlSelect5);
 			<div class="col-12">
 				<div class="main__title">
 					<h2>New Releases</h2>
-					<a href="releases.php" class="main__link">See all <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<a href="all_music.php" class="main__link">See all <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 					<path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z" />
 					</svg></a>
 				</div>

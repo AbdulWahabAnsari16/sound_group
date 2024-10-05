@@ -16,12 +16,14 @@ if (!$_SESSION['e']) {
 } else {
 ?>
 
+
 	<div class="player">
 		<div class="player__cover">
 			<img src="img/covers/cover.svg" alt="">
 		</div>
 
 		<div class="player__content">
+		
 			<span class="player__track"><b class="player__title"><?php echo $row2['title']; ?></b> – <span class="player__artist"><?php echo $row2['art_name']; ?></span></span>
 			<audio src="music/<?php echo $row2['mus_file']; ?>" id="audio" controls></audio>
 		</div>
