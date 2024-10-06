@@ -8,6 +8,9 @@ $sqlSelect = "SELECT * FROM `artist`,album WHERE artist.art_id = album.art_id AN
 $res = mysqli_query($conn,$sqlSelect);
 $row = mysqli_fetch_array($res);
 
+$sqlSelect2 = "SELECT * FROM `video`,`artist` WHERE video.art_id = artist.art_id AND artist.art_id = $id";
+$res2 = mysqli_query($conn,$sqlSelect2);
+$row2 = mysqli_fetch_array($res2);
 if(!$_SESSION['e']){
 	echo "<script>
     window.location.href = 'signin.php';
@@ -64,26 +67,16 @@ if(!$_SESSION['e']){
 				<!-- title -->
 				<div class="col-12">
 					<div class="main__title">
-						<h2>Music videos</h2>
+						<h2>video</h2>
 					</div>
 				</div>
 				<!-- end title -->
 
 				<div class="col-12">
 					<div class="main__carousel-wrap">
-						<div class="main__carousel main__carousel--podcasts owl-carousel" id="podcasts">
-							<div class="live">
-								<a href="http://www.youtube.com/watch?v=0O2aH4XLbto" class="live__cover open-video">
-									<img src="img/live/1.jpg" alt="">
-									<span class="live__value">6.5K viewers</span>
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"></path></svg>
-								</a>
-								<h3 class="live__title"><a href="http://www.youtube.com/watch?v=0O2aH4XLbto" class="open-video">Beautiful Stories From Anonymous People</a></h3>
-							</div>
-
-						<button class="main__nav main__nav--prev" data-nav="#podcasts" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,11H9.41l3.3-3.29a1,1,0,1,0-1.42-1.42l-5,5a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l5,5a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L9.41,13H17a1,1,0,0,0,0-2Z"/></svg></button>
-						<button class="main__nav main__nav--next" data-nav="#podcasts" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"/></svg></button>
-					</div>
+					<video width="320" height="240" controls>
+  						<source src="../ADMIN DASHBOARD/video/<?php echo $row2['vid_file']; ?>" type="video/mp4">
+					</video>
 				</div>
 			</section>
 			<!-- end music videos -->

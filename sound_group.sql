@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2024 at 04:47 PM
+-- Generation Time: Oct 06, 2024 at 01:30 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -242,9 +242,21 @@ CREATE TABLE `video` (
   `art_id` int(11) NOT NULL,
   `year` varchar(50) NOT NULL,
   `gen_id` int(11) NOT NULL,
-  `language` int(50) NOT NULL,
+  `lang_id` int(11) NOT NULL,
+  `alb_id` int(11) DEFAULT NULL,
   `vid_file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `video`
+--
+
+INSERT INTO `video` (`vid_id`, `vid_title`, `art_id`, `year`, `gen_id`, `lang_id`, `alb_id`, `vid_file`) VALUES
+(1, 'Tere Bin', 1, '2010', 1, 1, 6, 'Tere Bin_Atif Aslam.mp4\r\n'),
+(2, 'Jhoom', 2, '2015', 2, 4, 2, 'Jhoom_Ali Zafar.mp4'),
+(3, 'Ve Kamleya', 3, '2012', 3, 3, 3, 'Ve Kamleya_Arijit Singh.mp4'),
+(4, 'Happy Hour', 4, '2018', 4, 1, 6, 'happy_hour_talha_anjum.mp4\r\n'),
+(7, 'Starboy', 5, '2020', 5, 2, 6, 'Starboy_The Weeknd.mp4');
 
 -- --------------------------------------------------------
 
@@ -258,15 +270,6 @@ CREATE TABLE `wishlist` (
   `mus_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `wishlist`
---
-
-INSERT INTO `wishlist` (`wish_id`, `u_id`, `mus_id`, `created_at`) VALUES
-(1, 1, 6, '2024-10-03 11:37:50'),
-(2, 1, 11, '2024-10-03 14:36:28'),
-(3, 1, 19, '2024-10-03 14:40:22');
 
 --
 -- Indexes for dumped tables
@@ -337,7 +340,11 @@ ALTER TABLE `user`
 -- Indexes for table `video`
 --
 ALTER TABLE `video`
-  ADD PRIMARY KEY (`vid_id`);
+  ADD PRIMARY KEY (`vid_id`),
+  ADD KEY `art_id` (`art_id`),
+  ADD KEY `gen_id` (`gen_id`),
+  ADD KEY `lang_id` (`lang_id`),
+  ADD KEY `alb_id` (`alb_id`);
 
 --
 -- Indexes for table `wishlist`
@@ -391,7 +398,7 @@ ALTER TABLE `language`
 -- AUTO_INCREMENT for table `music`
 --
 ALTER TABLE `music`
-  MODIFY `mus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `mus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -409,13 +416,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `video`
 --
 ALTER TABLE `video`
-  MODIFY `vid_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `vid_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -447,6 +454,15 @@ ALTER TABLE `music`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `video`
+--
+ALTER TABLE `video`
+  ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`art_id`) REFERENCES `artist` (`art_id`),
+  ADD CONSTRAINT `video_ibfk_2` FOREIGN KEY (`gen_id`) REFERENCES `genre` (`gen_id`),
+  ADD CONSTRAINT `video_ibfk_3` FOREIGN KEY (`lang_id`) REFERENCES `language` (`lang_id`),
+  ADD CONSTRAINT `video_ibfk_4` FOREIGN KEY (`alb_id`) REFERENCES `album` (`alb_id`);
 
 --
 -- Constraints for table `wishlist`

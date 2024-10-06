@@ -115,7 +115,6 @@ $res6 = mysqli_query($conn,$sqlSelect5);
 							<?php
 							}
 							?>
-							<!-- <button class="main__load" type="button">Load more</button> -->
 						</div>
 					</div>
 				</div>
