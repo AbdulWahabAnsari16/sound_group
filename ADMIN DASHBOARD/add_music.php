@@ -41,7 +41,7 @@ if(isset($_POST['addMus'])){
                         <div class="col-md-6 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Music form Without Album</h4>
+                                    <h4 class="card-title">Music form</h4>
                                     <form class="forms-sample" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Title</label>

@@ -8,6 +8,7 @@ if(isset($_POST['verify'])){
     $res = mysqli_query($conn,$sql);
 	$row = mysqli_fetch_array($res);
     if(mysqli_num_rows($res)> 0){
+		$_SESSION['u_id'] = $row['u_id'];
 		$_SESSION['e'] = $row['u_email'];
         echo "<script>
     alert('Verified');

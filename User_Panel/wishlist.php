@@ -2,6 +2,13 @@
 session_start();
 include 'header.php';
 include 'conn.php';
+
+if (!$_SESSION['u_id']) {
+	echo "<script>
+    window.location.href = 'signin.php';
+  </script>";
+} else {
+
 $u_id = $_SESSION['u_id'];
 $sqlSelect = "SELECT * FROM `wishlist`,user,music,artist WHERE wishlist.u_id = user.u_id AND wishlist.mus_id = music.mus_id AND music.art_id = artist.art_id AND user.u_id = $u_id";
 $res = mysqli_query($conn, $sqlSelect);
@@ -9,11 +16,6 @@ $res = mysqli_query($conn, $sqlSelect);
 $sqlSelect2 = "SELECT * FROM `wishlist`,user,music,artist WHERE wishlist.u_id = user.u_id AND wishlist.mus_id = music.mus_id AND music.art_id = artist.art_id AND user.u_id = $u_id";
 $res2 = mysqli_query($conn, $sqlSelect2);
 $row2 = mysqli_fetch_array($res2);
-if (!$_SESSION['e']) {
-	echo "<script>
-    window.location.href = 'signin.php';
-  </script>";
-} else {
 ?>
 
 
