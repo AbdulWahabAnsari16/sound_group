@@ -32,7 +32,7 @@ $res = mysqli_query($conn, $sqlSelect);
                                     <td><?php echo $row['mus_id']; ?></td>
                                     <td><?php echo $row['title']; ?></td>
                                     <td><?php echo $row['art_name']; ?></td>
-                                    <td><a class="btn btn-primary mr-2" href="delete.php?mus_id=<?php echo $row[0]; ?>">Delete</a></td>
+                                    <td><a class="btn btn-primary mr-2" href="music_del.php?mus_id=<?php echo $row[0]; ?>">Delete</a></td>
                                 </tr>
                             <?php
                                 }

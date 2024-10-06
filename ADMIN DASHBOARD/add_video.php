@@ -22,15 +22,15 @@ if(isset($_POST['addVid'])){
     $lang = $_POST['lang'];
     $alb = $_POST['alb'];
 
-    $vid_Name = $_FILES['mus_file']['name'];
-    $vid_Tmp = $_FILES['mus_file']['tmp_name'];
+    $vid_Name = $_FILES['vid_file']['name'];
+    $vid_Tmp = $_FILES['vid_file']['tmp_name'];
     move_uploaded_file($vid_Tmp,"video/".$vid_Name);
 
-    $sqlAddVid = "";
+    $sqlAddVid = "INSERT INTO `video`(`vid_title`, `art_id`, `year`, `gen_id`, `lang_id`, `alb_id`, `vid_file`) VALUES ('$title','$art','$year','$gen','$lang','$alb','$vid_Name')";
     $result1 = mysqli_query($conn,$sqlAddVid);
     if($result1){
         echo "<script>
-        window.location.href='index.php'
+        window.location.href='add_video.php'
         </script>";
     }
 }
@@ -42,7 +42,7 @@ if(isset($_POST['addVid'])){
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Video form</h4>
-                                    <form class="forms-sample">
+                                    <form class="forms-sample" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Title</label>
                                             <input type="text" class="form-control" id="exampleInputUsername1"

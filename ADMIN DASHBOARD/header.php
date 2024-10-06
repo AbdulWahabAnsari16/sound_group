@@ -345,6 +345,12 @@
               <span class="menu-title">All Music</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="all_video.php">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">All Video</span>
+            </a>
+          </li>
         </ul>
       </nav>
     <!-- partial -->
